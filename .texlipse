@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Fri Jan 08 12:38:57 BRST 2016
+markTmpDer=true
+builderNum=2
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=main.tex
+outputFile=simulacoes.pdf
+langSpell=pt
+markDer=true
+srcDir=
