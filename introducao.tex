@@ -7,6 +7,27 @@ realizada análises de espaço de trabalho, cinemática e dinâmica do manipulad
 verificando possíveis colisões, e restrições de espaço na área de trabalho
 devido ao controle (manipulabilidade) do robô. 
 
+Nesta análise de viabilidade técnica, foi utilizada a 
+multi-plataforma de arquitetura de software de código aberto Open
+Robotics and Animation Virtual Environment (OpenRAVE). OpenRAVE é voltado para
+aplicações de robôs autônomos e possui simulação 3D, visualização, planejamento,
+e controle. A arquitetura de plugin permite ao usuário desenvolver controladores
+customizados ou estender funcionalidades. O desenvolvedor pode se
+concentrar em planejamento e aspectos específicos do problema, sem necessitar
+gerenciar explicitamente os detalhes de cinemática e dinâmica do robô, e
+detecção de colisão ou atualização do mundo. Além disso, OpenRAVE pode ser usado
+em conjunção com populares pacotes de robótica, como ROS, Player e MatLab
+\cite{diankov2008openrave}. 
+
+O ambiente e componentes da turbina necessários para o ambiente de simulação
+foram modelados no Software de projeto CAD 3D SolidWorks a partir dos desenhos
+técnicos da Energia Sustentável do Brasil (ESBR). Foram modelados: aro câmara,
+tubo de sucção, rotor, distribuidor, cone, pontos de acesso e pás da turbina.
+Posteriormente, após visita à unidade geradora, verificou-se que o modelo da pá
+continha inconsistências com a pá real, portanto foi realizado um mapeamento 3D
+do ambiente e da pá pelo sensor 3D Laser Scanner FARO Focus3D. Todo o ambiente é
+importado pelo ambiente de simulação OpenRAVE.
+
 O resultado da simulação revela as áreas da pá que podem ser revestidas, as
 áreas de mais difícil acesso, e as posições da base do manipulador para a
 execução bem sucedida da operação.
