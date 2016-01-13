@@ -1,36 +1,12 @@
-\subsection{Simulação 1 - Extremidades da pá}
+\subsection{Simulação 2 - Simulação completa}
 
-É fácil observar que as áreas de mais difícil acesso à pá são suas extremidades,
-áreas em preto da figura~\ref{fig::extremidades}, devido ao alcance do robô e
-por serem áreas em que a pá apresenta maior inclinação, o que afeta bastante na
-direção dos vetores normais à pá. A alteração da direção da normal e a posição
-do ponto a ser revestido são os fatores mais importantes para o aplicação de
-revestimento, logo pontos em uma posição elevada para o robô e normal
-direcionada para cima são complexos. Observe a figura~\ref{fig::normal}, o vetor
-$\vec{P}$ é um exemplo de vetor normal pertencente a um ponto da pá de difícil
-revestimento, tanto pela posição quanto pelo vetor normal.
-
-\begin{figure}[!ht]
-	\centering	
-	\includegraphics[width=.8\columnwidth]{figs/tocoat.jpg}
-	\caption{Extremidades da pá em preto.}
-	\label{fig::extremidades}
-\end{figure}
-
-\begin{figure}[!ht]
-	\centering	
-	\includegraphics[width=.5\columnwidth]{figs/normal.png}
-	\caption{Vetores normais (em preto) de pontos a serem revestidos (em
-	vermelho).}
-	\label{fig::normal}
-\end{figure}
-
-A simulação de teste de revestimento das extremidades considerou as seguintes
-variáveis: 
+Após a avaliação das extremidades da pá, deve-se ainda simular o revestimento
+total, pois sua superfície é muito irregular, podendo se aproximar ou se afastar
+do robô para certas posições de base. A simulação de teste de toda a pá
+considerou as seguintes variáveis:
 
 \begin{itemize}
-  \item O ângulo das pás da turbina foram fixados em $24^o$, ângulo natural de
-  uso.
+  \item O ângulo das pás da turbina variam de $0^o a 24^o$.
   \item O rotor da turbina foi girado de $0^o$ a $30^o$ com passo de $3^o$.
   \item A distância entre extremidade da pistola e pá pode variar $235
   \pm 5$ mm.
@@ -163,5 +139,3 @@ Para $y=-3220$ mm e $x=1300$ mm, nenhum ponto da extremidade superior direita é
 revestido, logo outras estratégias devem ser adotadas. A extremidade superior
 direita mostrou grande complexidade técnica e não foi possível encontrar uma
 solução viável para o 2º trilho a fim de revestí-la.
-
-\subsubsection{Conclusão da simulação de extremidades}
