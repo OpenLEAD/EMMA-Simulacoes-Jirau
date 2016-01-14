@@ -1,4 +1,4 @@
-\subsection{Simulação 1 - Extremidades da pá}
+\subsection{Simulação 1 - Extremidades da pá}\label{extremidades}
 
 É fácil observar que as áreas de mais difícil acesso à pá são suas extremidades,
 áreas em preto da figura~\ref{fig::extremidades}, devido ao alcance do robô e
@@ -38,7 +38,7 @@ variáveis:
   30^o$.
   \item A posição em $y$ do robô pode variar $-2970 \pm 250$ mm (posição
   global) com passo de 50 mm.
-  \item A posição em $x$ do robô pode variar $980 \pm 750$ mm em relação à pá
+  \item A posição em $x$ do robô pode variar $715 \pm 485$ mm em relação à pá
   com passo de 50 mm.
   \item A posição em $z$ do robô foi amostrada uniformemente em 7 pontos ao
   longo da pá.
@@ -77,7 +77,7 @@ vermelho, pontos que não foram revestidos para esta posição do robô.
 \end{figure}
 
 A simulação mostrou que o robô foi capaz de revestir toda a extremidade, na
-altura mínima $y=-3220$ mm, a uma distância de até $x=1300$ mm da pá. Conforme o
+altura mínima $y=-3220$ mm, a uma distância de até $x=1200$ mm da pá. Conforme o
 robô se aproxima da pá, verifica-se que a altura pode sofrer variações
 positivas, por exemplo para $x=980$ mm, $y=-3070$ mm. Entretanto, como já foi
 verificado na simulação dinâmica, não é aconselhável aproxima o robô da pá a uma
@@ -104,11 +104,11 @@ não foram revestidos para esta posição do robô.
 \end{figure}
 
 A simulação mostrou que o robô foi capaz de revestir toda a extremidade, na
-altura mínima $y=-3220$ mm, a uma distância de até $x=1300$ mm da pá. 
+altura mínima $y=-3220$ mm, a uma distância de até $x=1200$ mm da pá. 
 
 Dessa forma, a extremidade inferior direita não mostrou desafios técnicos.
 
-\subsubsection{Extremidade superior esquerda}
+\subsubsection{Extremidade superior esquerda}\label{superioresquerda}
 
 A extremidade superior esquerda possui complexidade de posição do ponto a
 ser revestido devido à altura do robô. A figura~\ref{fig::shoulderleft} mostra
@@ -124,7 +124,7 @@ não foram revestidos para esta posição do robô.
 \end{figure}
 
 A simulação mostrou que se mantivermos a altura da base em $y=-3220$ mm
-(altura mínima) e $x=1300$ mm, são necessárias duas posições em $z$ (ao longo do
+(altura mínima) e $x=1200$ mm, são necessárias duas posições em $z$ (ao longo do
 trilho) para o revestimento completo da extremidade. É interessante para o
 projeto manter altura fixa o quanto possível, pois há redução de grau de
 liberdade, e, portanto, redução na complexidade da base mecânica.
@@ -152,16 +152,26 @@ não foram revestidos para esta posição do robô.
 \end{figure}
 
 A simulação mostra que, mesmo se utilizarmos a altura máxima para a base
-$y=-2720$ mm e mantivermos $x=1300$ mm, não há posição em $z$ (ao longo do
+$y=-2720$ mm e mantivermos $x=1200$ mm, não há posição em $z$ (ao longo do
 trilho) para revestir por completo a extremidade. Aproximando o manipulador da
 pá, novos pontos são revestido, mas mesmo em $x=230$ mm o
 revestimento não é completo. O mesmo teste foi feito para diferentes
 ângulos do rotor, mas os resultados não são favoráveis, pois conforme o rotor
 gira, a pá se afasta do robô.
 
-Para $y=-3220$ mm e $x=1300$ mm, nenhum ponto da extremidade superior direita é
+Para $y=-3220$ mm e $x=1200$ mm, nenhum ponto da extremidade superior direita é
 revestido, logo outras estratégias devem ser adotadas. A extremidade superior
 direita mostrou grande complexidade técnica e não foi possível encontrar uma
 solução viável para o 2º trilho a fim de revestí-la.
 
 \subsubsection{Conclusão da simulação de extremidades}
+
+Os resultados da simulação das extremidades da pá mostraram que três das
+quatro extremidades da pá podem ser revestidas sem problemas técnicos, e
+mantendo fixas as variáveis $y=-3220$ mm (referência global) e $x=1200$ mm de
+distância em relação à pá. A extremidade superior direita ainda não apresenta
+solução de revestimento utilizando o trilho 2 com as tolerâncias especificadas.
+
+A rotação da turbina também foi simulada de $0^o$ a $30^o$. Entretanto, como
+em $0^o$ as três extremidades foram revestidas sem alteração de dois graus de
+liberdade $x$ e $y$, escolheu-se manter o rotor em $0^o$ para esta aplicação.

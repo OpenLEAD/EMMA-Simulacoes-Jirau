@@ -1,88 +1,120 @@
 \subsection{Simulação 2 - Simulação completa}
 
 Após a avaliação das extremidades da pá, deve-se ainda simular o revestimento
-total, pois sua superfície é muito irregular, podendo se aproximar ou se afastar
-do robô para certas posições de base. A simulação de teste de toda a pá
-considerou as seguintes variáveis:
+total, pois a superfície da pá é muito irregular, podendo se aproximar ou se
+afastar do robô para certas posições de base. Além disso, foram abordadas novas
+estratégias para a solução de revestimento da extremidade direita da pá. A
+simulação de teste de toda a pá considerou as seguintes variáveis:
 
 \begin{itemize}
-  \item O ângulo das pás da turbina variam de $0^o a 24^o$.
+  \item O ângulo das pás da turbina variam de $0^o a 24^o$. O acréscimo deste
+  grau de liberdade buscou solucionar o problema da extremidade direita.
   \item O rotor da turbina foi girado de $0^o$ a $30^o$ com passo de $3^o$.
+  Manteve-se este grau de liberdade, pois em conjunto com o giro da pá, o
+  problema da extremidade superior direita poderia ser solucionado.
   \item A distância entre extremidade da pistola e pá pode variar $235
   \pm 5$ mm.
   \item O ângulo entre a pistola e o plano da pá pode variar $90^o \pm
-  30^o$.
-  \item A posição em $y$ do robô pode variar $-2970 \pm 250$ mm (posição
-  global) com passo de 50 mm.
-  \item A posição em $x$ do robô pode variar $980 \pm 750$ mm em relação à pá
-  com passo de 50 mm.
-  \item A posição em $z$ do robô foi amostrada uniformemente em 7 pontos ao
-  longo da pá.
+  30^o$. Alguns testes utilizaram a tolerância limite de $60^o$ como tentativa
+  de revestir a extremidade direita superior.
+  \item A posição em $y$ do robô foi mantida fixa. $-3220$ mm na referência
+  global.
+  \item A posição em $x$ do robô foi mantida fixa. $1200$ mm de
+  distância em relação a pá.
+  \item A posição em $z$ do robô foi amostrada uniformemente em 10 pontos ao
+  longo da pá. A equipe de mecânica restringiu o movimento em $z$ tal que
+  $-1240 < z < 1240$, garantindo para este $y$ mínimo ($-3220$ mm) espaço
+  suficiente para a construção do trilho.
 \end{itemize}
 
-A figura~\ref{fig::trilho2all} mostra todas as posições simuladas para a base do
-robô. As restrições dessas posições são a altura mínima da base ao aro câmara e
-a altura do robô. Para cada posição de base e ângulo do rotor, foi simulado o
-processo de revestimento para as quatro extremidades da pá, levando em
-consideração as tolerâncias.
+A partir dos parâmetros dados, foram realizadas as seguintes simulações:
+\begin{enumerate}
+  \item Variação da base apenas em $z$, variação do ângulo do rotor e do ângulo
+  da pá.
+  \item Variação de tolerância do ângulo entre pistola de revestimento e pá: $90^o \pm
+  60^o$.
+  \item Variação do rotor e ângulo da pá.
+\end{enumerate}
+
+\subsubsection{Teste completo - 1 }\label{teste1}
+
+A restrição da mecânica para a construção do trilho $-1240$ mm $< z <$ $1240$ mm
+prejudica o revestimento na lateral direita da pá, região em que o aro câmara
+está próximo de $20^o$. A figura~\ref{fig::simcomp1_1} mostra a
+discretização completa da pá, nas condições em que o rotor está $0^o$ e a pá
+$24^o$:
+em preto, pontos revestidos; e em vermelho, pontos que não foram revestidos para
+esta posição do robô. Como pode ser visto, não foi possível revestir a pontos da
+lateral direita, a extremidade superior direita e a extremidade superior
+esquerda.
 
 \begin{figure}[!ht]
 	\centering	
-	\includegraphics[width=.5\columnwidth]{figs/trilho2all.png}
-	\caption{Possíveis posições da base do robô, em verde.}
-	\label{fig::trilho2all}
+	\includegraphics[width=.5\columnwidth]{figs/simcomp1_1.png}
+	\caption{Simulação de revestimento completo da pá, considerando as
+	restrições mecânicas da base, ângulo $0^o$ do rotor e $24^o$ da pá.}
+	\label{fig::simcomp1_1}
 \end{figure}
 
-Nas subseções seguintes, serão analisadas cada extremidade da
-pá independentemente, considerando as varíaveis acima.
+A extremidade superior esquerda só será revestida caso haja elevação da base do
+robô ou, talvez, utilizando tolerância de ângulo de revestimento $60^o$.
+Como esta região da pá tem inclinação, estando projetada para o robô, alterar
+o ângulo da pá para $0^o$ não favorece o revestimento. 
 
-\subsubsection{Extremidade inferior esquerda}
+Em relação à lateral direita da pá, a ideia imediata é rotar a turbina,
+esperando que o lado direito se aproxime do robô. Outra possibilidade é girar a
+pá em seu próprio eixo para $0^o$, em vez de $24^o$. 
 
-A extremidade inferior esquerda apresenta a complexidade de posição do ponto a
-ser revestido, visto que os pontos estão na borda, próximas ao aro câmara,
-aumentando o risco de colisões. A figura~\ref{fig::footleft} mostra a
-discretização da pá na extremidade esquerda: pontos azuis são pontos revestidos
-na tolerância de $30^o$; em preto, pontos revestidos sem tolerância; e em
-vermelho, pontos que não foram revestidos para esta posição do robô.
+A figura~\ref{fig::simcomp1_2} mostra a discretização completa da pá, nas
+condições em que o rotor está $15^o$ e a pá $24^o$: em preto, pontos
+revestidos; e em vermelho, pontos que não foram revestidos para esta posição do
+robô. Conforme o rotor é girado, embora o revestimento aumente na lateral
+direita da pá, a lateral esquerda e as áreas inferiores começam a não ser
+revestidas. A extremidade superior direita continua sem ser revestida, como
+esperado, vide subseção \ref{superioresquerda}. 
 
 \begin{figure}[!ht]
 	\centering	
-	\includegraphics[width=.5\columnwidth]{figs/footleft.png}
-	\caption{Estudo de revestimento para a extremidade inferior esquerda.}
-	\label{fig::footleft}
+	\includegraphics[width=.5\columnwidth]{figs/simcomp1_2.png}
+	\caption{Simulação de revestimento completo da pá, considerando as
+	restrições mecânicas da base, ângulo $15^o$ do rotor e $24^o$ da pá.}
+	\label{fig::simcomp1_2}
 \end{figure}
 
-A simulação mostrou que o robô foi capaz de revestir toda a extremidade, na
-altura mínima $y=-3220$ mm, a uma distância de até $x=1300$ mm da pá. Conforme o
-robô se aproxima da pá, verifica-se que a altura pode sofrer variações
-positivas, por exemplo para $x=980$ mm, $y=-3070$ mm. Entretanto, como já foi
-verificado na simulação dinâmica, não é aconselhável aproxima o robô da pá a uma
-distância inferior a $x=1000$ mm, pois os torques durante a execução podem ser
-elevados.
-
-Dessa forma, a extremidade inferior esquerda não mostrou desafios técnicos.
-
-\subsubsection{Extremidade inferior direita}
-
-A extremidade inferior direita possui complexidade de posição do ponto a
-ser revestido maior que a extremidade inferior esquera, visto que a extremidade
-está mais próxima da área em que a curvatura do aro é superior a $20^o$ (base
-mais próxima do solo). A figura~\ref{fig::footright} mostra a discretização da
-pá na extremidade esquerda: pontos azuis são pontos revestidos na tolerância de
-$30^o$; em preto, pontos revestidos sem tolerância; e em vermelho, pontos que
-não foram revestidos para esta posição do robô.
+A figura~\ref{fig::simcomp1_4} mostra a discretização completa da pá, nas
+condições em que o rotor está $0^o$ e a pá $0^o$: em preto, pontos
+revestidos; e em vermelho, pontos que não foram revestidos para esta posição do
+robô. Conforme a pá é girada, o revestimento aumenta na lateral direita e se
+mantém na lateral direita. Isso ocorre, pois o robô se mantém longe do aro
+câmara no lado direito, já que o aro ainda não está $20^o$. Esta é a melhor
+posição para revestimento da pá, situação aparente ao método da Rijeza, porém a
+extremidade superior direita ainda não foi revestida.
 
 \begin{figure}[!ht]
 	\centering	
-	\includegraphics[width=.5\columnwidth]{figs/footright.png}
-	\caption{Estudo de revestimento para a extremidade inferior direita.}
-	\label{fig::footright}
+	\includegraphics[width=.5\columnwidth]{figs/simcomp1_4.png}
+	\caption{Simulação de revestimento completo da pá, considerando as
+	restrições mecânicas da base, ângulo $0^o$ do rotor e $0^o$ da pá.}
+	\label{fig::simcomp1_4}
 \end{figure}
 
-A simulação mostrou que o robô foi capaz de revestir toda a extremidade, na
-altura mínima $y=-3220$ mm, a uma distância de até $x=1300$ mm da pá. 
+\subsubsection{Teste completo - 2}
 
-Dessa forma, a extremidade inferior direita não mostrou desafios técnicos.
+Foi observado na subseção~\ref{teste1} que a extremidade superior esquerda não
+foi revestida, podendo ser necessário  Quando aumentamos a tolerância de ângulo
+de revestimento para $60^o$, obtemos a figura\ref{fig::simcomp1_3}. A figura mostra que foi possível revestir toda a
+extremidade superior esquerda, salvo pontos de colisão com o rotor. Entretanto,
+é importante a base ter o grau de liberdade em $y$ para eventuais problemas
+suprir eventuais problemas de modelagem.
+
+\begin{figure}[!ht]
+	\centering	
+	\includegraphics[width=.5\columnwidth]{figs/simcomp1_3.png}
+	\caption{Simulação de revestimento completo da pá, considerando as
+	restrições mecânicas da base, ângulo $0^o$ do rotor e $24^o$ da pá,
+	tolerância de $60^o$ de revestimento.}
+	\label{fig::simcomp1_3}
+\end{figure}
 
 \subsubsection{Extremidade superior esquerda}
 
